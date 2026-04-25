@@ -1,0 +1,14 @@
+{
+  "name": "antigravity-ai-code-editor",
+  "version": "1.0.0",
+  "description": "AI-powered code editor with Intent Mode, Codebase Explainer, and Decision Memory",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev",
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

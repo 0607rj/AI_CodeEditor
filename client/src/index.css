@@ -1,0 +1,170 @@
+/* ── Google Fonts (must be first) ─────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base Reset & Defaults ─────────────────────────────── */
+:root {
+  --editor-bg: #0a0e17;
+  --surface: #111827;
+  --card: #1a2332;
+  --border: #1e293b;
+  --accent-cyan: #06b6d4;
+  --accent-violet: #8b5cf6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--editor-bg);
+  color: #f1f5f9;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar Styling ─────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ── Component Utilities ───────────────────────────────── */
+@layer components {
+  .glass-panel {
+    @apply bg-editor-surface/80 backdrop-blur-md border border-editor-border rounded-xl;
+  }
+
+  .glass-card {
+    @apply bg-editor-card/60 backdrop-blur-sm border border-editor-border rounded-lg;
+  }
+
+  .glow-border {
+    @apply border border-accent-cyan/20 shadow-[0_0_15px_rgba(6,182,212,0.1)];
+  }
+
+  .glow-border-violet {
+    @apply border border-accent-violet/20 shadow-[0_0_15px_rgba(139,92,246,0.1)];
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 bg-gradient-to-r from-accent-cyan to-accent-violet
+           text-white font-medium rounded-lg
+           hover:shadow-[0_0_20px_rgba(6,182,212,0.3)]
+           transition-all duration-300 ease-out
+           active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-editor-card border border-editor-border
+           text-text-secondary font-medium rounded-lg
+           hover:bg-editor-hover hover:text-text-primary hover:border-accent-cyan/30
+           transition-all duration-300 ease-out
+           active:scale-95;
+  }
+
+  .btn-icon {
+    @apply p-2 rounded-lg text-text-muted
+           hover:bg-editor-hover hover:text-text-primary
+           transition-all duration-200;
+  }
+
+  .input-field {
+    @apply w-full px-3 py-2 bg-editor-bg border border-editor-border rounded-lg
+           text-text-primary placeholder-text-muted
+           focus:outline-none focus:border-accent-cyan/50 focus:ring-1 focus:ring-accent-cyan/20
+           transition-all duration-200;
+  }
+
+  .tag {
+    @apply px-2 py-0.5 text-xs font-medium rounded-full;
+  }
+
+  .tag-high {
+    @apply tag bg-accent-rose/20 text-accent-rose;
+  }
+
+  .tag-medium {
+    @apply tag bg-accent-amber/20 text-accent-amber;
+  }
+
+  .tag-low {
+    @apply tag bg-accent-emerald/20 text-accent-emerald;
+  }
+
+  .section-title {
+    @apply text-xs font-semibold uppercase tracking-wider text-text-muted;
+  }
+}
+
+/* ── React Flow Custom Styling ─────────────────────────── */
+.react-flow__background {
+  background-color: var(--editor-bg) !important;
+}
+
+.react-flow__minimap {
+  background-color: var(--surface) !important;
+  border-radius: 8px;
+  border: 1px solid var(--border) !important;
+}
+
+.react-flow__controls {
+  border-radius: 8px;
+  border: 1px solid var(--border) !important;
+  background-color: var(--surface) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+.react-flow__controls-button {
+  background-color: var(--surface) !important;
+  border-color: var(--border) !important;
+  color: #94a3b8 !important;
+}
+
+.react-flow__controls-button:hover {
+  background-color: var(--card) !important;
+  color: #f1f5f9 !important;
+}
+
+/* ── Monaco Editor Overrides ───────────────────────────── */
+.monaco-editor .margin {
+  background-color: var(--editor-bg) !important;
+}
+
+/* ── Loading Skeleton ──────────────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--card) 25%, var(--border) 50%, var(--card) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 6px;
+}

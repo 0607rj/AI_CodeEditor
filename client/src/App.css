@@ -1,0 +1,12 @@
+/* App.css — Minimal overrides, main design lives in index.css */
+/* This file exists for any component-specific styles that don't fit Tailwind */
+
+/* Ensure React Flow takes full height */
+.react-flow__renderer {
+  height: 100% !important;
+}
+
+/* Toast animation */
+div[data-sonner-toast] {
+  font-family: 'Inter', sans-serif !important;
+}
